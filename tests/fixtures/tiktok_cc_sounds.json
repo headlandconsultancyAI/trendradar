@@ -1,0 +1,68 @@
+[
+ {
+  "rank": 1,
+  "type": "sound",
+  "musicId": "880",
+  "name": "Speed up, slow down",
+  "author": "nightbus",
+  "publishedVideoCount": 400000,
+  "videoViews": 0,
+  "trend": "rising",
+  "linkedVideoUrl": "https://example.com/sample/sound-0"
+ },
+ {
+  "rank": 2,
+  "type": "sound",
+  "musicId": "881",
+  "name": "Winter lights (instrumental)",
+  "author": "glasshouse",
+  "publishedVideoCount": 200000,
+  "videoViews": 0,
+  "trend": "rising",
+  "linkedVideoUrl": "https://example.com/sample/sound-1"
+ },
+ {
+  "rank": 3,
+  "type": "sound",
+  "musicId": "882",
+  "name": "Tea break (sped up)",
+  "author": "kettle.wav",
+  "publishedVideoCount": 133333,
+  "videoViews": 0,
+  "trend": "stable",
+  "linkedVideoUrl": "https://example.com/sample/sound-2"
+ },
+ {
+  "rank": 4,
+  "type": "sound",
+  "musicId": "883",
+  "name": "Office party anthem",
+  "author": "the temps",
+  "publishedVideoCount": 100000,
+  "videoViews": 0,
+  "trend": "rising",
+  "linkedVideoUrl": "https://example.com/sample/sound-3"
+ },
+ {
+  "rank": 5,
+  "type": "sound",
+  "musicId": "884",
+  "name": "Quiet hours",
+  "author": "loft",
+  "publishedVideoCount": 80000,
+  "videoViews": 0,
+  "trend": "falling",
+  "linkedVideoUrl": "https://example.com/sample/sound-4"
+ },
+ {
+  "rank": 6,
+  "type": "sound",
+  "musicId": "885",
+  "name": "Big Monday energy",
+  "author": "deskchair",
+  "publishedVideoCount": 66666,
+  "videoViews": 0,
+  "trend": "stable",
+  "linkedVideoUrl": "https://example.com/sample/sound-5"
+ }
+]

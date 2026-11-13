@@ -1,0 +1,146 @@
+[
+ {
+  "rank": 1,
+  "type": "video",
+  "videoId": "9200000",
+  "videoUrl": "https://example.com/sample/cc-0",
+  "videoDesc": "Tell me you grew up in the UK without telling me",
+  "playCount": 9000000,
+  "likeCountVideo": 700000,
+  "commentCount": 20000,
+  "shareCount": 50000,
+  "authorHandle": "@creator_1",
+  "trend": "rising",
+  "soundName": "Speed up, slow down",
+  "hashtags": [
+   "#fyp",
+   "#uk"
+  ]
+ },
+ {
+  "rank": 2,
+  "type": "video",
+  "videoId": "9200001",
+  "videoUrl": "https://example.com/sample/cc-1",
+  "videoDesc": "This dog has a better commute than me",
+  "playCount": 4500000,
+  "likeCountVideo": 350000,
+  "commentCount": 10000,
+  "shareCount": 25000,
+  "authorHandle": "@creator_2",
+  "trend": "stable",
+  "soundName": "Monday again",
+  "hashtags": [
+   "#fyp",
+   "#uk"
+  ]
+ },
+ {
+  "rank": 3,
+  "type": "video",
+  "videoId": "9200002",
+  "videoUrl": "https://example.com/sample/cc-2",
+  "videoDesc": "POV: your mum finds the receipt",
+  "playCount": 3000000,
+  "likeCountVideo": 233333,
+  "commentCount": 6666,
+  "shareCount": 16666,
+  "authorHandle": "@creator_3",
+  "trend": "stable",
+  "soundName": "Tea break (sped up)",
+  "hashtags": [
+   "#fyp",
+   "#uk"
+  ]
+ },
+ {
+  "rank": 4,
+  "type": "video",
+  "videoId": "9200003",
+  "videoUrl": "https://example.com/sample/cc-3",
+  "videoDesc": "The only Christmas advert I'll watch this year",
+  "playCount": 2250000,
+  "likeCountVideo": 175000,
+  "commentCount": 5000,
+  "shareCount": 12500,
+  "authorHandle": "@creator_4",
+  "trend": "stable",
+  "soundName": "Monday again",
+  "hashtags": [
+   "#fyp",
+   "#uk"
+  ]
+ },
+ {
+  "rank": 5,
+  "type": "video",
+  "videoId": "9200004",
+  "videoUrl": "https://example.com/sample/cc-4",
+  "videoDesc": "Rating London's most overpriced coffee",
+  "playCount": 1800000,
+  "likeCountVideo": 140000,
+  "commentCount": 4000,
+  "shareCount": 10000,
+  "authorHandle": "@creator_5",
+  "trend": "stable",
+  "soundName": "Original sound",
+  "hashtags": [
+   "#fyp",
+   "#uk"
+  ]
+ },
+ {
+  "rank": 6,
+  "type": "video",
+  "videoId": "9200005",
+  "videoUrl": "https://example.com/sample/cc-5",
+  "videoDesc": "When the self checkout needs approval again",
+  "playCount": 1500000,
+  "likeCountVideo": 116666,
+  "commentCount": 3333,
+  "shareCount": 8333,
+  "authorHandle": "@creator_6",
+  "trend": "rising",
+  "soundName": "Tea break (sped up)",
+  "hashtags": [
+   "#fyp",
+   "#uk"
+  ]
+ },
+ {
+  "rank": 7,
+  "type": "video",
+  "videoId": "9200006",
+  "videoUrl": "https://example.com/sample/cc-6",
+  "videoDesc": "Explaining my job to my nan",
+  "playCount": 1285714,
+  "likeCountVideo": 100000,
+  "commentCount": 2857,
+  "shareCount": 7142,
+  "authorHandle": "@creator_7",
+  "trend": "rising",
+  "soundName": "Tea break (sped up)",
+  "hashtags": [
+   "#fyp",
+   "#uk"
+  ]
+ },
+ {
+  "rank": 8,
+  "type": "video",
+  "videoId": "9200007",
+  "videoUrl": "https://example.com/sample/cc-7",
+  "videoDesc": "Speed up, slow down transition but make it a bin lorry",
+  "playCount": 1125000,
+  "likeCountVideo": 87500,
+  "commentCount": 2500,
+  "shareCount": 6250,
+  "authorHandle": "@creator_8",
+  "trend": "falling",
+  "soundName": "Tea break (sped up)",
+  "hashtags": [
+   "#fyp",
+   "#uk"
+  ]
+ }
+]

@@ -1,0 +1,44 @@
+[
+ {
+  "rank": 1,
+  "name": "christmasadvert",
+  "publishedVideoCount": 200000,
+  "videoViews": 900000000,
+  "trend": "stable"
+ },
+ {
+  "rank": 2,
+  "name": "commutecheck",
+  "publishedVideoCount": 100000,
+  "videoViews": 450000000,
+  "trend": "rising"
+ },
+ {
+  "rank": 3,
+  "name": "mealdeal",
+  "publishedVideoCount": 66666,
+  "videoViews": 300000000,
+  "trend": "stable"
+ },
+ {
+  "rank": 4,
+  "name": "officelife",
+  "publishedVideoCount": 50000,
+  "videoViews": 225000000,
+  "trend": "rising"
+ },
+ {
+  "rank": 5,
+  "name": "budgetday",
+  "publishedVideoCount": 40000,
+  "videoViews": 180000000,
+  "trend": "stable"
+ },
+ {
+  "rank": 6,
+  "name": "winterarc",
+  "publishedVideoCount": 33333,
+  "videoViews": 150000000,
+  "trend": "stable"
+ }
+]

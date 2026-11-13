@@ -1,0 +1,76 @@
+# Trend Radar watchlist
+# ---------------------
+# Edit freely. Each run logs any handle that returns nothing, so typos are easy to spot.
+#
+# Lists:
+#   culture  = where formats start (UK creators, meme pages, culture publishers)
+#   brands   = organisations doing short-form well (useful for "this works for brands like you")
+
+region: GB            # ISO country code for charts and TikTok Creative Center
+lookback_days: 10     # ignore watchlist uploads older than this
+per_account: 12       # recent videos to pull per account per run
+
+youtube:
+  chart_categories:   # YouTube "mostPopular" now only covers music, film and gaming
+    "0": All
+    "10": Music
+    "20": Gaming
+    "1": Film trailers
+  culture:
+    - "@Sidemen"
+    - "@BetaSquad"
+    - "@AmeliaDimz"
+    - "@LADbible"
+    - "@BBCThree"
+    - "@Channel4"
+  brands:
+    - "@duolingo"
+    - "@Gymshark"
+
+tiktok:
+  creative_center:    # TikTok's own trend data for the region above
+    videos: 50
+    sounds: 50
+    hashtags: 30
+    period_days: 7    # 7 or 30
+  culture:
+    - ladbible
+    - unilad
+    - bbcthree
+    - channel4
+    - sidemen
+  brands:
+    - ryanair
+    - duolingo
+    - aldiuk
+    - lidlgb
+    - gymshark
+    - scrubdaddy
+    - monzo
+
+instagram:
+  culture:
+    - ladbible
+    - unilad
+    - bbcthree
+    - sidemen
+    - dazed
+  brands:
+    - greggs_official
+    - aldiuk
+    - lidlgb
+    - gymshark
+    - monzo
+    - duolingo
+    - ryanair
+
+# Apify actors used. Swap these if one breaks or you prefer another.
+actors:
+  tiktok_trends: automation-lab/tiktok-trends-scraper
+  tiktok_profiles: clockworks/tiktok-scraper
+  instagram_reels: apify/instagram-reel-scraper
+
+# Claude models (the API key comes from the ANTHROPIC_API_KEY secret)
+claude:
+  tagging_model: claude-haiku-5-5
+  digest_model: claude-sonnet-5-5

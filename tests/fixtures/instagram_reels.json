@@ -1,0 +1,502 @@
+[
+ {
+  "_list": "culture",
+  "id": "3300001",
+  "shortCode": "S001",
+  "url": "https://example.com/sample/reel-1",
+  "caption": "We asked the night shift what keeps them going #reels",
+  "timestamp": "2026-11-06T08:00:11.284091Z",
+  "videoPlayCount": 691345,
+  "likesCount": 34567,
+  "commentsCount": 2074,
+  "ownerUsername": "sample_culture_mag",
+  "videoDuration": 38,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "culture",
+  "id": "3300002",
+  "shortCode": "S002",
+  "url": "https://example.com/sample/reel-2",
+  "caption": "POV: it's 4:59 on a Friday #reels",
+  "timestamp": "2026-11-10T01:47:31.687305Z",
+  "videoPlayCount": 72826,
+  "likesCount": 3641,
+  "commentsCount": 218,
+  "ownerUsername": "sample_culture_mag",
+  "videoDuration": 59,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "culture",
+  "id": "3300003",
+  "shortCode": "S003",
+  "url": "https://example.com/sample/reel-3",
+  "caption": "Explaining pensions in 30 seconds with a sausage roll #reels",
+  "timestamp": "2026-11-09T10:59:06.602970Z",
+  "videoPlayCount": 95276,
+  "likesCount": 4763,
+  "commentsCount": 285,
+  "ownerUsername": "sample_culture_mag",
+  "videoDuration": 13,
+  "musicInfo": {
+   "audio_id": "5512",
+   "song_name": "Speed up, slow down",
+   "artist_name": "nightbus",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "culture",
+  "id": "3300004",
+  "shortCode": "S004",
+  "url": "https://example.com/sample/reel-4",
+  "caption": "Behind the scenes at 4am in the bakery #reels",
+  "timestamp": "2026-11-12T19:21:37.189551Z",
+  "videoPlayCount": 52245,
+  "likesCount": 2612,
+  "commentsCount": 156,
+  "ownerUsername": "sample_culture_mag",
+  "videoDuration": 45,
+  "musicInfo": {
+   "audio_id": "5511",
+   "song_name": "Winter lights (instrumental)",
+   "artist_name": "glasshouse",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "culture",
+  "id": "3300005",
+  "shortCode": "S005",
+  "url": "https://example.com/sample/reel-5",
+  "caption": "Rating your out of office messages #reels",
+  "timestamp": "2026-11-07T13:47:42.236995Z",
+  "videoPlayCount": 101879,
+  "likesCount": 5093,
+  "commentsCount": 305,
+  "ownerUsername": "sample_culture_mag",
+  "videoDuration": 46,
+  "musicInfo": {
+   "audio_id": "5511",
+   "song_name": "Winter lights (instrumental)",
+   "artist_name": "glasshouse",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "culture",
+  "id": "3300006",
+  "shortCode": "S006",
+  "url": "https://example.com/sample/reel-6",
+  "caption": "A day in the life of our youngest engineer #reels",
+  "timestamp": "2026-11-08T03:24:06.976718Z",
+  "videoPlayCount": 138474,
+  "likesCount": 6923,
+  "commentsCount": 415,
+  "ownerUsername": "everyday_britain",
+  "videoDuration": 9,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "culture",
+  "id": "3300007",
+  "shortCode": "S007",
+  "url": "https://example.com/sample/reel-7",
+  "caption": "How it started vs how it's going #reels",
+  "timestamp": "2026-11-06T08:08:29.919142Z",
+  "videoPlayCount": 1580457,
+  "likesCount": 79022,
+  "commentsCount": 4741,
+  "ownerUsername": "everyday_britain",
+  "videoDuration": 16,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "culture",
+  "id": "3300008",
+  "shortCode": "S008",
+  "url": "https://example.com/sample/reel-8",
+  "caption": "Things only people who work in an office understand #reels",
+  "timestamp": "2026-11-12T19:15:52.856365Z",
+  "videoPlayCount": 223365,
+  "likesCount": 11168,
+  "commentsCount": 670,
+  "ownerUsername": "everyday_britain",
+  "videoDuration": 21,
+  "musicInfo": {
+   "audio_id": "5511",
+   "song_name": "Winter lights (instrumental)",
+   "artist_name": "glasshouse",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "culture",
+  "id": "3300009",
+  "shortCode": "S009",
+  "url": "https://example.com/sample/reel-9",
+  "caption": "We asked the night shift what keeps them going #reels",
+  "timestamp": "2026-11-10T03:11:44.275681Z",
+  "videoPlayCount": 120584,
+  "likesCount": 6029,
+  "commentsCount": 361,
+  "ownerUsername": "everyday_britain",
+  "videoDuration": 42,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "culture",
+  "id": "3300010",
+  "shortCode": "S010",
+  "url": "https://example.com/sample/reel-10",
+  "caption": "POV: it's 4:59 on a Friday #reels",
+  "timestamp": "2026-11-09T21:13:11.165460Z",
+  "videoPlayCount": 102760,
+  "likesCount": 5138,
+  "commentsCount": 308,
+  "ownerUsername": "everyday_britain",
+  "videoDuration": 37,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300011",
+  "shortCode": "S011",
+  "url": "https://example.com/sample/reel-11",
+  "caption": "Explaining pensions in 30 seconds with a sausage roll #reels",
+  "timestamp": "2026-11-11T21:10:09.237517Z",
+  "videoPlayCount": 94556,
+  "likesCount": 4727,
+  "commentsCount": 283,
+  "ownerUsername": "sample_bakery_chain",
+  "videoDuration": 17,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300012",
+  "shortCode": "S012",
+  "url": "https://example.com/sample/reel-12",
+  "caption": "Behind the scenes at 4am in the bakery #reels",
+  "timestamp": "2026-11-06T02:20:04.234410Z",
+  "videoPlayCount": 48238,
+  "likesCount": 2411,
+  "commentsCount": 144,
+  "ownerUsername": "sample_bakery_chain",
+  "videoDuration": 46,
+  "musicInfo": {
+   "audio_id": "5512",
+   "song_name": "Speed up, slow down",
+   "artist_name": "nightbus",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "brands",
+  "id": "3300013",
+  "shortCode": "S013",
+  "url": "https://example.com/sample/reel-13",
+  "caption": "Rating your out of office messages #reels",
+  "timestamp": "2026-11-07T12:10:35.640872Z",
+  "videoPlayCount": 566572,
+  "likesCount": 28328,
+  "commentsCount": 1699,
+  "ownerUsername": "sample_bakery_chain",
+  "videoDuration": 15,
+  "musicInfo": {
+   "audio_id": "5512",
+   "song_name": "Speed up, slow down",
+   "artist_name": "nightbus",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "brands",
+  "id": "3300014",
+  "shortCode": "S014",
+  "url": "https://example.com/sample/reel-14",
+  "caption": "A day in the life of our youngest engineer #reels",
+  "timestamp": "2026-11-08T07:10:37.801244Z",
+  "videoPlayCount": 76814,
+  "likesCount": 3840,
+  "commentsCount": 230,
+  "ownerUsername": "sample_bakery_chain",
+  "videoDuration": 38,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300015",
+  "shortCode": "S015",
+  "url": "https://example.com/sample/reel-15",
+  "caption": "How it started vs how it's going #reels",
+  "timestamp": "2026-11-12T13:03:59.330797Z",
+  "videoPlayCount": 56366,
+  "likesCount": 2818,
+  "commentsCount": 169,
+  "ownerUsername": "sample_bakery_chain",
+  "videoDuration": 20,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300016",
+  "shortCode": "S016",
+  "url": "https://example.com/sample/reel-16",
+  "caption": "Things only people who work in an office understand #reels",
+  "timestamp": "2026-11-12T19:17:31.903122Z",
+  "videoPlayCount": 27401,
+  "likesCount": 1370,
+  "commentsCount": 82,
+  "ownerUsername": "sample_retailer",
+  "videoDuration": 12,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300017",
+  "shortCode": "S017",
+  "url": "https://example.com/sample/reel-17",
+  "caption": "We asked the night shift what keeps them going #reels",
+  "timestamp": "2026-11-07T14:57:49.434253Z",
+  "videoPlayCount": 30251,
+  "likesCount": 1512,
+  "commentsCount": 90,
+  "ownerUsername": "sample_retailer",
+  "videoDuration": 20,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300018",
+  "shortCode": "S018",
+  "url": "https://example.com/sample/reel-18",
+  "caption": "POV: it's 4:59 on a Friday #reels",
+  "timestamp": "2026-11-05T19:42:01.701483Z",
+  "videoPlayCount": 25896,
+  "likesCount": 1294,
+  "commentsCount": 77,
+  "ownerUsername": "sample_retailer",
+  "videoDuration": 40,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300019",
+  "shortCode": "S019",
+  "url": "https://example.com/sample/reel-19",
+  "caption": "Explaining pensions in 30 seconds with a sausage roll #reels",
+  "timestamp": "2026-11-04T18:53:05.018813Z",
+  "videoPlayCount": 32609,
+  "likesCount": 1630,
+  "commentsCount": 97,
+  "ownerUsername": "sample_retailer",
+  "videoDuration": 20,
+  "musicInfo": {
+   "audio_id": "5512",
+   "song_name": "Speed up, slow down",
+   "artist_name": "nightbus",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "brands",
+  "id": "3300020",
+  "shortCode": "S020",
+  "url": "https://example.com/sample/reel-20",
+  "caption": "Behind the scenes at 4am in the bakery #reels",
+  "timestamp": "2026-11-09T12:55:29.970973Z",
+  "videoPlayCount": 17325,
+  "likesCount": 866,
+  "commentsCount": 51,
+  "ownerUsername": "sample_retailer",
+  "videoDuration": 28,
+  "musicInfo": {
+   "audio_id": "5511",
+   "song_name": "Winter lights (instrumental)",
+   "artist_name": "glasshouse",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "brands",
+  "id": "3300021",
+  "shortCode": "S021",
+  "url": "https://example.com/sample/reel-21",
+  "caption": "Rating your out of office messages #reels",
+  "timestamp": "2026-11-10T08:11:08.221755Z",
+  "videoPlayCount": 6890,
+  "likesCount": 344,
+  "commentsCount": 20,
+  "ownerUsername": "sample_fintech",
+  "videoDuration": 15,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300022",
+  "shortCode": "S022",
+  "url": "https://example.com/sample/reel-22",
+  "caption": "A day in the life of our youngest engineer #reels",
+  "timestamp": "2026-11-07T06:56:23.508941Z",
+  "videoPlayCount": 7868,
+  "likesCount": 393,
+  "commentsCount": 23,
+  "ownerUsername": "sample_fintech",
+  "videoDuration": 31,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300023",
+  "shortCode": "S023",
+  "url": "https://example.com/sample/reel-23",
+  "caption": "How it started vs how it's going #reels",
+  "timestamp": "2026-11-06T08:44:48.060642Z",
+  "videoPlayCount": 130853,
+  "likesCount": 6542,
+  "commentsCount": 392,
+  "ownerUsername": "sample_fintech",
+  "videoDuration": 14,
+  "musicInfo": {
+   "audio_id": "5511",
+   "song_name": "Winter lights (instrumental)",
+   "artist_name": "glasshouse",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ },
+ {
+  "_list": "brands",
+  "id": "3300024",
+  "shortCode": "S024",
+  "url": "https://example.com/sample/reel-24",
+  "caption": "Things only people who work in an office understand #reels",
+  "timestamp": "2026-11-05T14:18:27.825820Z",
+  "videoPlayCount": 11870,
+  "likesCount": 593,
+  "commentsCount": 35,
+  "ownerUsername": "sample_fintech",
+  "videoDuration": 18,
+  "musicInfo": {
+   "audio_id": "5513",
+   "song_name": null,
+   "artist_name": null,
+   "uses_original_audio": true
+  },
+  "audio_is_trending": false
+ },
+ {
+  "_list": "brands",
+  "id": "3300025",
+  "shortCode": "S025",
+  "url": "https://example.com/sample/reel-25",
+  "caption": "We asked the night shift what keeps them going #reels",
+  "timestamp": "2026-11-10T00:22:24.104282Z",
+  "videoPlayCount": 17963,
+  "likesCount": 898,
+  "commentsCount": 53,
+  "ownerUsername": "sample_fintech",
+  "videoDuration": 20,
+  "musicInfo": {
+   "audio_id": "5512",
+   "song_name": "Speed up, slow down",
+   "artist_name": "nightbus",
+   "uses_original_audio": false
+  },
+  "audio_is_trending": true
+ }
+]

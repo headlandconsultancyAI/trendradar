@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trend Radar</title>
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f3ee; --surface: #fffdf9; --surface-2: #efe9e0; --ink: #1d1a16; --ink-2: #5b544b;
+  --ink-3: #8a8277; --line: #e2dbcf; --accent: #e8452c; --accent-ink: #fff; --good: #1f8a5b;
+  --yt: #e8452c; --tt: #111111; --ig: #c13584; --meme: #f2b134; --durable: #4c7bd9;
+  --shadow: 0 1px 2px rgba(29,26,22,.06), 0 6px 20px rgba(29,26,22,.06);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15130f; --surface: #1f1c17; --surface-2: #2a2620; --ink: #f3eee6; --ink-2: #c1b8ab;
+  --ink-3: #8e8579; --line: #3a352d; --accent: #ff6a4d; --good: #4cc38a; --tt: #e9e4dc;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+}}
+:root[data-theme="dark"] {
+  --bg: #15130f; --surface: #1f1c17; --surface-2: #2a2620; --ink: #f3eee6; --ink-2: #c1b8ab;
+  --ink-3: #8e8579; --line: #3a352d; --accent: #ff6a4d; --good: #4cc38a; --tt: #e9e4dc;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 "Instrument Sans", system-ui, sans-serif; }
+a { color: inherit; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 16px; }
+header { padding: 28px 0 8px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+h1 { font: 400 46px/1 "Instrument Serif", Georgia, serif; margin: 0; letter-spacing: -.01em; }
+h1 em { color: var(--accent); }
+.sub { color: var(--ink-2); margin: 6px 0 0; max-width: 60ch; }
+.meta { color: var(--ink-3); font-size: 13px; text-align: right; }
+.meta button { margin-top: 6px; }
+.banner { background: var(--meme); color: #1d1a16; padding: 8px 12px; border-radius: 10px; margin: 12px 0 0; font-size: 14px; }
+nav.tabs { display: flex; gap: 4px; margin: 20px 0 0; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+nav.tabs button { border: 0; background: none; color: var(--ink-2); font: 600 15px "Instrument Sans"; padding: 10px 14px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+nav.tabs .n { color: var(--ink-3); font-weight: 500; }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 14px 0; }
+.chips { display: flex; gap: 4px; background: var(--surface-2); padding: 3px; border-radius: 999px; }
+.chip { border: 0; background: none; padding: 6px 12px; border-radius: 999px; font: 500 13px "Instrument Sans"; color: var(--ink-2); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+select, input[type=search], .btn { font: 500 13px "Instrument Sans"; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; }
+input[type=search] { min-width: 180px; flex: 1; max-width: 280px; }
+.btn { cursor: pointer; white-space: nowrap; }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+label.toggle { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.formats { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 16px; }
+.fmt { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 5px 10px; font-size: 13px; cursor: pointer; color: var(--ink-2); }
+.fmt b { color: var(--ink); font-weight: 600; }
+.fmt[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); }
+.section-title { font: 400 28px/1.15 "Instrument Serif", serif; margin: 8px 0 4px; }
+.section-sub { color: var(--ink-2); margin: 0 0 16px; font-size: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; padding-bottom: 32px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow); }
+.thumb { position: relative; aspect-ratio: 4 / 5; background: var(--surface-2); overflow: hidden; display: block; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb .ph { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 14px; font: 400 21px/1.15 "Instrument Serif", serif; color: #fff; }
+.ph.youtube { background: linear-gradient(160deg, #ff8a5c, #c62a12); }
+.ph.tiktok { background: linear-gradient(160deg, #3a3a3a, #000); }
+.ph.instagram { background: linear-gradient(160deg, #f9a54a, #c13584 55%, #5b51d8); }
+.heat { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,.72); color: #fff; font: 700 12px "Instrument Sans"; padding: 4px 8px; border-radius: 999px; }
+.heat i { font-style: normal; color: #ffb199; }
+.plat { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,.92); color: #1d1a16; font: 700 11px "Instrument Sans"; padding: 4px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: .04em; }
+.body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag { font: 600 11px "Instrument Sans"; padding: 3px 7px; border-radius: 6px; background: var(--surface-2); color: var(--ink-2); }
+.tag.meme { background: color-mix(in srgb, var(--meme) 25%, transparent); color: var(--ink); }
+.tag.durable { background: color-mix(in srgb, var(--durable) 20%, transparent); color: var(--ink); }
+.tag.rising { background: var(--accent); color: var(--accent-ink); }
+.tag.new { background: var(--good); color: #fff; }
+.hook { font-weight: 600; font-size: 15px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.why { color: var(--ink-2); font-size: 13px; font-style: italic; }
+.by { color: var(--ink-3); font-size: 13px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-top: 1px solid var(--line); padding-top: 8px; margin-top: auto; }
+.stat b { display: block; font-size: 15px; }
+.stat span { color: var(--ink-3); font-size: 11px; }
+.sound { font-size: 12px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.actions { display: flex; gap: 6px; }
+.actions a, .actions button { flex: 1; text-align: center; text-decoration: none; }
+.star[aria-pressed="true"] { background: var(--meme); border-color: var(--meme); color: #1d1a16; }
+.empty { color: var(--ink-2); padding: 40px 0; text-align: center; }
+table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { font-size: 12px; color: var(--ink-3); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; background: var(--surface-2); }
+td.num { font-variant-numeric: tabular-nums; }
+.trend-rising { color: var(--good); font-weight: 600; }
+.trend-falling { color: var(--ink-3); }
+.two { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; padding-bottom: 32px; }
+.list-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 10px; }
+.list-card h4 { margin: 0 0 4px; font-size: 15px; }
+.list-card p { margin: 0; color: var(--ink-2); font-size: 13px; }
+.digest-head { font: 400 30px/1.2 "Instrument Serif", serif; margin: 6px 0 20px; max-width: 34ch; }
+.picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; padding-bottom: 24px; }
+.pick { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; box-shadow: var(--shadow); }
+.pick h3 { font: 400 25px/1.15 "Instrument Serif", serif; margin: 6px 0 10px; }
+.pick dt { font: 700 11px "Instrument Sans"; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); margin-top: 10px; }
+.pick dd { margin: 2px 0 0; }
+.pick .ex { display: block; font-size: 13px; margin-top: 4px; color: var(--ink-2); }
+.num-badge { font: 400 15px "Instrument Serif"; color: var(--accent); }
+.note { width: 100%; font: 13px "Instrument Sans"; border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; background: var(--bg); color: var(--ink); resize: vertical; min-height: 36px; }
+footer { color: var(--ink-3); font-size: 13px; border-top: 1px solid var(--line); padding: 18px 0 40px; display: grid; gap: 6px; }
+@media (max-width: 760px) { h1 { font-size: 36px; } .two { grid-template-columns: 1fr; } .meta { text-align: left; } .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; } .stats { grid-template-columns: 1fr 1fr; } .stat:nth-child(3) { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Trend <em>Radar</em></h1>
+      <p class="sub">What's moving on YouTube, TikTok and Reels in the UK right now, and which formats are worth borrowing for client video.</p>
+    </div>
+    <div class="meta"><div id="updated">Loading…</div><button class="btn" id="theme">Toggle theme</button></div>
+  </header>
+  <div id="banner"></div>
+
+  <nav class="tabs" role="tablist" id="tabs">
+    <button role="tab" data-tab="videos" aria-selected="true">Rising videos</button>
+    <button role="tab" data-tab="digest">Formats to borrow this week</button>
+    <button role="tab" data-tab="sounds">Sounds picking up</button>
+    <button role="tab" data-tab="brands">Brands doing it well</button>
+    <button role="tab" data-tab="swipe">Swipe file <span class="n" id="swipe-n"></span></button>
+  </nav>
+
+  <main id="main"></main>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>
+const S = { data: null, tab: "videos", platform: "all", shelf: "all", format: "all", sort: "heat", rising: false, q: "" };
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+let swipe = store.get("radar.swipe", {});
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const n = v => v == null ? "–" : v >= 1e9 ? (v / 1e9).toFixed(1) + "B" : v >= 1e6 ? (v / 1e6).toFixed(1) + "M" : v >= 1e4 ? Math.round(v / 1e3) + "k" : v >= 1e3 ? (v / 1e3).toFixed(1) + "k" : Math.round(v).toString();
+const ago = h => h == null ? "" : h < 1 ? "just now" : h < 48 ? Math.round(h) + "h ago" : Math.round(h / 24) + "d ago";
+const PLAT = { youtube: "YouTube", tiktok: "TikTok", instagram: "Reels" };
+
+// theme
+(function () {
+  const t = store.get("radar.theme", null);
+  if (t) document.documentElement.dataset.theme = t;
+  document.getElementById("theme").onclick = () => {
+    const dark = document.documentElement.dataset.theme
+      ? document.documentElement.dataset.theme === "dark"
+      : matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme = dark ? "light" : "dark";
+    store.set("radar.theme", document.documentElement.dataset.theme);
+  };
+})();
+
+document.getElementById("tabs").onclick = e => {
+  const b = e.target.closest("button[data-tab]"); if (!b) return;
+  S.tab = b.dataset.tab; S.format = "all";
+  document.querySelectorAll("#tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
+  render();
+};
+
+function filtered(list) {
+  let xs = S.data.items.filter(i => list === "brands" ? i.list === "brands" : i.list !== "brands");
+  if (S.platform !== "all") xs = xs.filter(i => i.platform === S.platform);
+  if (S.shelf !== "all") xs = xs.filter(i => i.shelf === S.shelf);
+  if (S.rising) xs = xs.filter(i => i.rising);
+  if (S.q) { const q = S.q.toLowerCase(); xs = xs.filter(i => (i.title + " " + i.author + " " + (i.sound?.name || "") + " " + i.format).toLowerCase().includes(q)); }
+  return xs;
+}
+
+function sortItems(xs) {
+  const key = { heat: i => i.heat ?? 0, velocity: i => i.velocity ?? -1, surprise: i => i.vs_usual ?? -1, newest: i => -(i.hours_live ?? 1e9) }[S.sort];
+  return xs.slice().sort((a, b) => key(b) - key(a));
+}
+
+function controls(xs) {
+  const chips = (name, opts) => `<div class="chips" data-ctl="${name}">${opts.map(([v, l]) => `<button class="chip" data-v="${v}" aria-pressed="${S[name] === v}">${l}</button>`).join("")}</div>`;
+  const counts = {};
+  xs.forEach(i => counts[i.format] = (counts[i.format] || 0) + 1);
+  const fmts = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  return `<div class="bar">
+    ${chips("platform", [["all", "All"], ["youtube", "YouTube"], ["tiktok", "TikTok"], ["instagram", "Reels"]])}
+    ${chips("shelf", [["all", "Everything"], ["fast meme", "Fast memes"], ["durable format", "Durable formats"]])}
+    <select data-ctl="sort" aria-label="Sort">
+      ${[["heat", "Hottest overall"], ["velocity", "Most views per hour"], ["surprise", "Beat the account's usual"], ["newest", "Newest"]].map(([v, l]) => `<option value="${v}" ${S.sort === v ? "selected" : ""}>${l}</option>`).join("")}
+    </select>
+    <label class="toggle"><input type="checkbox" data-ctl="rising" ${S.rising ? "checked" : ""}> Rising only</label>
+    <input type="search" data-ctl="q" placeholder="Search hooks, accounts, sounds" value="${esc(S.q)}">
+  </div>
+  <div class="formats" data-ctl="format">
+    <button class="fmt" data-v="all" aria-pressed="${S.format === "all"}">All formats <b>${xs.length}</b></button>
+    ${fmts.map(([f, c]) => `<button class="fmt" data-v="${esc(f)}" aria-pressed="${S.format === f}">${esc(f)} <b>${c}</b></button>`).join("")}
+  </div>`;
+}
+
+function card(i) {
+  const saved = !!swipe[i.id];
+  const img = i.thumbnail ? `<img loading="lazy" referrerpolicy="no-referrer" src="${esc(i.thumbnail)}" alt="" onerror="this.remove()">` : "";
+  const shelfCls = i.shelf === "fast meme" ? "meme" : "durable";
+  return `<article class="card">
+    <a class="thumb" href="${esc(i.url)}" target="_blank" rel="noopener">
+      <div class="ph ${i.platform}">${esc(i.hook || i.title).slice(0, 90)}</div>${img}
+      <span class="heat">Heat <i>${i.heat ?? "–"}</i></span><span class="plat">${PLAT[i.platform]}</span>
+    </a>
+    <div class="body">
+      <div class="tags">
+        ${i.rising ? `<span class="tag rising">Rising</span>` : ""}${i.new_today ? `<span class="tag new">New today</span>` : ""}
+        <span class="tag">${esc(i.format)}</span><span class="tag ${shelfCls}">${i.shelf === "fast meme" ? "Fast meme" : "Durable"}</span>
+      </div>
+      <div class="hook">${esc(i.hook || i.title || "(no caption)")}</div>
+      ${i.why ? `<div class="why">${esc(i.why)}</div>` : ""}
+      <div class="by">${esc(i.author)}${i.hours_live != null ? " · " + ago(i.hours_live) : ""}${i.source === "creative_center" || i.also_trending ? " · TikTok trending list" : ""}${i.source === "chart" ? " · UK chart #" + i.rank : ""}</div>
+      ${i.sound?.name ? `<div class="sound">♪ ${esc(i.sound.name)}${i.sound.artist ? " · " + esc(i.sound.artist) : ""}</div>` : ""}
+      <div class="stats">
+        <div class="stat"><b>${n(i.views)}</b><span>views</span></div>
+        <div class="stat"><b>${n(i.velocity)}</b><span>per hour</span></div>
+        <div class="stat"><b>${i.vs_usual != null ? i.vs_usual.toFixed(1) + "×" : "–"}</b><span>vs usual</span></div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="${esc(i.url)}" target="_blank" rel="noopener">Watch ↗</a>
+        <button class="btn star" data-star="${esc(i.id)}" aria-pressed="${saved}">${saved ? "★ Saved" : "☆ Save"}</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+function viewVideos(list) {
+  const base = filtered(list);
+  const xs = sortItems(S.format === "all" ? base : base.filter(i => i.format === S.format));
+  const title = list === "brands"
+    ? `<h2 class="section-title">Brand videos beating their usual numbers</h2><p class="section-sub">Recent posts from the brand watchlist. "vs usual" compares each video with that brand's typical views, so you can see which formats actually landed.</p>`
+    : `<h2 class="section-title">Videos picking up fastest in the UK</h2><p class="section-sub">UK charts, TikTok's own trending list and the culture watchlist, ranked by heat: views per hour, how far a video beat the account's usual, and whether it's still speeding up.</p>`;
+  return title + controls(base) + (xs.length ? `<div class="grid">${xs.map(card).join("")}</div>` : `<p class="empty">Nothing matches those filters.</p>`);
+}
+
+function viewSounds() {
+  const cc = S.data.sounds.filter(s => s.source === "creative_center");
+  const radar = S.data.sounds.filter(s => s.source === "radar");
+  const tags = S.data.hashtags || [];
+  const trend = t => t === "rising" ? `<span class="trend-rising">▲ rising</span>` : t === "falling" ? `<span class="trend-falling">▼ falling</span>` : t ? "steady" : "";
+  return `<h2 class="section-title">Sounds being picked up in the UK</h2>
+  <p class="section-sub">Catch a sound while it's rising. By the time it's top of the list, it's usually a week too late for brand content.</p>
+  <div class="two"><div>
+    <h3>TikTok's trending sounds, last ${S.data.cc_period || 7} days</h3>
+    ${cc.length ? `<table><thead><tr><th>#</th><th>Sound</th><th>Videos using it</th><th>Direction</th></tr></thead><tbody>
+      ${cc.map(s => `<tr><td class="num">${s.rank ?? ""}</td><td>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}<div class="by">${esc(s.artist)}${s.also_in_watchlist ? " · also on the watchlist" : ""}</div></td><td class="num">${n(s.uses)}</td><td>${trend(s.trend)}</td></tr>`).join("")}
+    </tbody></table>` : `<p class="empty">No Creative Center sounds in this run.</p>`}
+  </div><div>
+    <h3>Sounds spreading across the watchlist</h3>
+    ${radar.length ? radar.map(s => `<div class="list-card"><h4>♪ ${esc(s.name)}</h4><p>${PLAT[s.platform]} · ${s.accounts.length} accounts · ${n(s.views)} views${s.trending ? " · flagged trending" : ""}</p>
+      ${s.examples.map(e => `<a class="by" style="display:block" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.author)} ↗</a>`).join("")}</div>`).join("") : `<p class="empty">No sound is shared by two or more watchlist accounts yet.</p>`}
+    ${tags.length ? `<h3>Trending TikTok hashtags</h3>${tags.slice(0, 15).map(t => `<div class="list-card"><h4>#${esc(t.name)}</h4><p>${n(t.posts)} posts · ${n(t.views)} views ${trend(t.trend)}</p></div>`).join("")}` : ""}
+  </div></div>`;
+}
+
+function viewDigest() {
+  const d = S.data.digest;
+  if (!d) return `<p class="empty">The first digest arrives on Monday, or run the workflow with "Write a fresh weekly digest now" ticked.</p>`;
+  return `<p class="section-sub">Week of ${esc(d.week_of)}${S.data.sample ? " · sample digest" : ""}</p>
+  <div class="digest-head">${esc(d.headline)}</div>
+  <div class="picks">${(d.picks || []).map((p, k) => `<section class="pick">
+    <span class="num-badge">${String(k + 1).padStart(2, "0")}</span> <span class="tag ${p.shelf === "fast meme" ? "meme" : "durable"}">${p.shelf === "fast meme" ? "Fast meme" : "Durable format"}</span>
+    <h3>${esc(p.title)}</h3>
+    <dl><dt>What it is</dt><dd>${esc(p.what_it_is)}</dd>
+    <dt>Why it's working</dt><dd>${esc(p.why_its_working)}</dd>
+    <dt>How a client could use it</dt><dd>${esc(p.client_angle)}</dd>
+    <dt>Watch out</dt><dd>${esc(p.watch_out)}</dd>
+    ${(p.examples || []).length ? `<dt>Examples</dt><dd>${p.examples.map(e => `<a class="ex" href="${esc(e.url)}" target="_blank" rel="noopener">${PLAT[e.platform]} · ${esc(e.author)}: ${esc(e.hook).slice(0, 70)} ↗</a>`).join("")}</dd>` : ""}</dl>
+  </section>`).join("")}</div>
+  ${(d.sounds_to_watch || []).length ? `<h3>Sounds to watch</h3>${d.sounds_to_watch.map(s => `<div class="list-card"><h4>♪ ${esc(s.name)}</h4><p>${esc(s.note)}</p></div>`).join("")}` : ""}`;
+}
+
+function viewSwipe() {
+  const xs = Object.values(swipe).sort((a, b) => (b.saved_at || "").localeCompare(a.saved_at || ""));
+  if (!xs.length) return `<h2 class="section-title">Your swipe file</h2><p class="empty">Hit ☆ Save on any video and it lands here, with room for a note on how you'd use it. Saved in this browser only.</p>`;
+  return `<h2 class="section-title">Your swipe file</h2>
+  <div class="bar"><button class="btn primary" id="copy-md">Copy as notes for a brainstorm</button><button class="btn" id="dl-csv">Download CSV</button><button class="btn" id="clear-swipe">Clear all</button></div>
+  <div class="grid">${xs.map(i => card(i).replace('<div class="actions">', `<textarea class="note" data-note="${esc(i.id)}" placeholder="How could a client use this?">${esc(i.note || "")}</textarea><div class="actions">`)).join("")}</div>`;
+}
+
+function render() {
+  const m = document.getElementById("main");
+  m.innerHTML = { videos: () => viewVideos("culture"), brands: () => viewVideos("brands"), sounds: viewSounds, digest: viewDigest, swipe: viewSwipe }[S.tab]();
+  document.getElementById("swipe-n").textContent = Object.keys(swipe).length || "";
+}
+
+document.addEventListener("click", e => {
+  const chip = e.target.closest("[data-ctl] [data-v]");
+  if (chip) { S[chip.parentElement.dataset.ctl] = chip.dataset.v; return render(); }
+  const star = e.target.closest("[data-star]");
+  if (star) {
+    const id = star.dataset.star;
+    if (swipe[id]) delete swipe[id];
+    else { const it = S.data.items.find(i => i.id === id); if (it) swipe[id] = { ...it, saved_at: new Date().toISOString(), note: "" }; }
+    store.set("radar.swipe", swipe); return render();
+  }
+  if (e.target.id === "clear-swipe" && confirm("Clear your whole swipe file?")) { swipe = {}; store.set("radar.swipe", swipe); render(); }
+  if (e.target.id === "copy-md") {
+    const md = Object.values(swipe).map(i => `- **${i.format}** (${PLAT[i.platform]}, ${i.author}): ${i.hook}\n  ${i.url}${i.note ? "\n  Idea: " + i.note : ""}`).join("\n");
+    navigator.clipboard?.writeText(md).then(() => { e.target.textContent = "Copied"; setTimeout(() => e.target.textContent = "Copy as notes for a brainstorm", 1500); });
+  }
+  if (e.target.id === "dl-csv") {
+    const cols = ["platform", "author", "format", "shelf", "hook", "views", "url", "note"];
+    const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const csv = [cols.join(","), ...Object.values(swipe).map(i => cols.map(c => q(i[c])).join(","))].join("\n");
+    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([csv], { type: "text/csv" })), download: "swipe-file.csv" });
+    a.click();
+  }
+});
+document.addEventListener("change", e => {
+  const c = e.target.dataset.ctl;
+  if (c === "sort") { S.sort = e.target.value; render(); }
+  if (c === "rising") { S.rising = e.target.checked; render(); }
+});
+let qTimer;
+document.addEventListener("input", e => {
+  if (e.target.dataset.ctl === "q") {
+    clearTimeout(qTimer);
+    qTimer = setTimeout(() => { S.q = e.target.value; const pos = e.target.selectionStart; render(); const el = document.querySelector('[data-ctl="q"]'); el.focus(); el.setSelectionRange(pos, pos); }, 200);
+  }
+  if (e.target.dataset.note) { swipe[e.target.dataset.note].note = e.target.value; store.set("radar.swipe", swipe); }
+});
+
+fetch("data/radar.json?" + Date.now()).then(r => r.json()).then(d => {
+  S.data = d;
+  const t = new Date(d.generated_at);
+  document.getElementById("updated").textContent = `Updated ${t.toLocaleString("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} · ${d.items.length} videos`;
+  if (d.sample) document.getElementById("banner").innerHTML = `<div class="banner">Sample data. This is what the radar looks like; the real feed appears after the first scheduled run.</div>`;
+  document.getElementById("foot").innerHTML = `
+    <div><b>How heat works:</b> views per hour since posting, ranked within each platform (55%), how far the video beat the account's usual views (35%), and whether it sped up since yesterday (10%). TikTok trending-list videos without a post time are scored on their chart position.</div>
+    <div>Videos this run: ${d.counts.youtube} YouTube · ${d.counts.tiktok} TikTok · ${d.counts.instagram} Reels. Region: ${esc(d.region)}.</div>
+    ${d.missing_handles?.length ? `<div>Handles that returned nothing (check spelling in watchlist.yaml): ${d.missing_handles.map(esc).join(", ")}</div>` : ""}`;
+  render();
+}).catch(() => { document.getElementById("main").innerHTML = `<p class="empty">Couldn't load data/radar.json. Has the workflow run yet?</p>`; document.getElementById("updated").textContent = ""; });
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+[
+ {
+  "id": "c1",
+  "snippet": {
+   "title": "Sample Artist: Northern Lights (Official Music Video)",
+   "channelTitle": "SampleArtistVEVO",
+   "publishedAt": "2026-11-11T14:17:00Z",
+   "thumbnails": {},
+   "tags": []
+  },
+  "statistics": {
+   "viewCount": "2400000",
+   "likeCount": "80000",
+   "commentCount": "6000"
+  },
+  "contentDetails": {
+   "duration": "PT3M41S"
+  }
+ },
+ {
+  "id": "c2",
+  "snippet": {
+   "title": "Winter Heist: Official Trailer",
+   "channelTitle": "Sample Pictures UK",
+   "publishedAt": "2026-11-12T00:17:00Z",
+   "thumbnails": {},
+   "tags": []
+  },
+  "statistics": {
+   "viewCount": "1800000",
+   "likeCount": "60000",
+   "commentCount": "4500"
+  },
+  "contentDetails": {
+   "duration": "PT2M12S"
+  }
+ },
+ {
+  "id": "c3",
+  "snippet": {
+   "title": "We tried to survive 24 hours in a lighthouse",
+   "channelTitle": "The Sample Five",
+   "publishedAt": "2026-11-10T18:17:00Z",
+   "thumbnails": {},
+   "tags": []
+  },
+  "statistics": {
+   "viewCount": "3100000",
+   "likeCount": "103333",
+   "commentCount": "7750"
+  },
+  "contentDetails": {
+   "duration": "PT28M3S"
+  }
+ },
+ {
+  "id": "c4",
+  "snippet": {
+   "title": "Ranking every UK service station",
+   "channelTitle": "Road Snacks",
+   "publishedAt": "2026-11-12T10:17:00Z",
+   "thumbnails": {},
+   "tags": []
+  },
+  "statistics": {
+   "viewCount": "900000",
+   "likeCount": "30000",
+   "commentCount": "2250"
+  },
+  "contentDetails": {
+   "duration": "PT19M40S"
+  }
+ }
+]

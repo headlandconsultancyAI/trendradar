@@ -1,0 +1,56 @@
+{
+ "week_of": "2026-11-09",
+ "headline": "Workplace in-jokes and very British gripes are carrying the week, and brands doing well are the ones laughing at themselves first.",
+ "picks": [
+  {
+   "title": "Explain a dull thing with a silly prop",
+   "shelf": "durable format",
+   "what_it_is": "Someone explains a dry topic (interest rates, pensions) using biscuits, a sausage roll or whatever's on the desk.",
+   "why_its_working": "Two watchlist posts did around four times their account's usual views. The prop is the hook and the explanation still lands.",
+   "client_angle": "Perfect for finance and infrastructure clients. Pick one thing customers or investors get wrong and explain it in 30 seconds with an object from the office. Their own expert on camera, no script cards.",
+   "watch_out": "If the prop is funnier than the point, people remember the biscuit and not the brand.",
+   "example_ids": ["tt:9100004", "ig:3300011"]
+  },
+  {
+   "title": "Asking strangers one oddly specific question",
+   "shelf": "durable format",
+   "what_it_is": "Street interview, one question, quick cuts between answers.",
+   "why_its_working": "Fast to make and the answers do the work. It's topping views per hour on both TikTok and YouTube Shorts this week.",
+   "client_angle": "Take it to a site, a depot or a trade show and ask staff or visitors one question tied to the client's story. 'What's the weirdest thing you've fixed?' works for any engineering client.",
+   "watch_out": "Needs release forms and a fair bit of footage to get five good answers.",
+   "example_ids": ["tt:9100001", "yt:w0"]
+  },
+  {
+   "title": "Behind the scenes at an unsociable hour",
+   "shelf": "durable format",
+   "what_it_is": "A calm, unpolished look at work happening at 4am or 6am, usually with a gentle trending sound.",
+   "why_its_working": "Curiosity about how things actually get made. The bakery version beat its account's usual comfortably.",
+   "client_angle": "Most corporate clients have a 'while you were asleep' story: a plant, a control room, a delivery hub. Shoot it on a phone and keep it quiet and honest.",
+   "watch_out": "Check what's visible on screens and whiteboards before posting.",
+   "example_ids": ["tt:9100005", "ig:3300004"]
+  },
+  {
+   "title": "POV: the end of the working week",
+   "shelf": "fast meme",
+   "what_it_is": "A POV caption about a universal office moment, acted out in a few seconds.",
+   "why_its_working": "Huge reach this week and easy to relate to. It'll feel tired in a fortnight.",
+   "client_angle": "Only worth it if the client's social team can turn it round in a day or two. Their own office, their own people, one line on screen.",
+   "watch_out": "Slow sign-off kills it. If it can't go out this week, skip it.",
+   "example_ids": ["ig:3300002"]
+  },
+  {
+   "title": "Speed up, slow down transitions",
+   "shelf": "fast meme",
+   "what_it_is": "Footage cut to the 'Speed up, slow down' sound, with the slow bit landing on a reveal.",
+   "why_its_working": "Rising on TikTok's UK sound chart and already spreading across several watchlist accounts on both platforms.",
+   "client_angle": "Great for any client with a satisfying process to show: something being built, cleaned, assembled or delivered.",
+   "watch_out": "Check the sound is cleared for commercial use before a brand account posts it.",
+   "example_ids": []
+  }
+ ],
+ "sounds_to_watch": [
+  {"name": "Speed up, slow down", "note": "Rising and easy to cut process footage to."},
+  {"name": "Winter lights (instrumental)", "note": "Soft and seasonal, good for quiet behind the scenes clips through December."}
+ ],
+ "model": "sample"
+}
