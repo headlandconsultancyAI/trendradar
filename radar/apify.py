@@ -9,6 +9,9 @@ from .common import log
 
 API = "https://api.apify.com/v2/acts/{actor}/run-sync-get-dataset-items"
 
+# first raw record from each actor call, saved to docs/data/debug_samples.json for troubleshooting
+SAMPLES: dict[str, dict] = {}
+
 
 def run_actor(actor: str, payload: dict, timeout_s: int = 290) -> list[dict]:
     token = os.environ.get("APIFY_TOKEN")
@@ -36,5 +39,8 @@ def run_actor(actor: str, payload: dict, timeout_s: int = 290) -> list[dict]:
         log.error("Apify %s returned non-JSON", actor)
         return []
     items = data if isinstance(data, list) else data.get("items", [])
+    if items:
+        kind = payload.get("trendType") or ("profiles" if "profiles" in payload else "reels")
+        SAMPLES[f"{actor} {kind}"] = items[0]
     log.info("Apify %s returned %d items", actor, len(items))
     return items

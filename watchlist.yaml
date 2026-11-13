@@ -9,6 +9,10 @@
 region: GB            # ISO country code for charts and TikTok Creative Center
 lookback_days: 10     # ignore watchlist uploads older than this
 per_account: 12       # recent videos to pull per account per run
+english_only: true    # drop videos whose caption or audio isn't in English
+
+# The weekly write-up Claude publishes every Monday morning (linked from the "Formats to borrow" tab)
+digest_page_url: https://claude.ai/artifact/9XaBMcKPxBzNTyyPr9u34Z
 
 youtube:
   chart_categories:   # YouTube "mostPopular" now only covers music, film and gaming

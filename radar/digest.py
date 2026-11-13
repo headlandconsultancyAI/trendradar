@@ -76,7 +76,7 @@ def build(items: list[dict], sounds: list[dict], model: str) -> dict | None:
         text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
         digest = parse_json(text)
     except Exception as e:
-        log.error("Digest failed: %s", e)
+        common.claude_error("Weekly digest", e)
         return None
     attach_examples(digest, items)
     digest["week_of"] = common.NOW.date().isoformat()

@@ -9,6 +9,16 @@ log = logging.getLogger("radar")
 
 NOW = datetime.now(timezone.utc)
 
+# What happened with Claude this run, shown on the dashboard so failures aren't silent
+CLAUDE = {"key_set": False, "tagged": 0, "errors": []}
+
+
+def claude_error(where: str, e: Exception) -> None:
+    msg = f"{where}: {type(e).__name__}: {e}"
+    log.error(msg)
+    if msg[:200] not in [m[:200] for m in CLAUDE["errors"]]:
+        CLAUDE["errors"].append(msg[:500])
+
 
 def set_now(dt: datetime) -> None:
     """Lets offline tests pin 'now' so sample data always looks fresh."""
@@ -106,6 +116,8 @@ def make_item(**kw) -> dict:
         "rank": None,
         "hashtags": [],
         "sound": None,         # {id, name, artist, original, trending}
+        "lang_hint": None,     # the platform's own language code, if it gives one
+        "category": None,      # YouTube category id, e.g. "10" music
     }
     item.update({k: v for k, v in kw.items() if k in item})
     if not item["hook"]:

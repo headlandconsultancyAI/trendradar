@@ -15,7 +15,7 @@ from pathlib import Path
 
 import yaml
 
-from radar import common, digest, reels, score, tag, tiktok, youtube
+from radar import common, digest, language, reels, score, shortlist, tag, tiktok, youtube
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "docs" / "data"
@@ -73,10 +73,19 @@ def main():
         log.error("No videos fetched at all. Check your keys and the log above. Keeping old data.")
         raise SystemExit(1)
 
+    dropped = []
+    if cfg.get("english_only", True):
+        items, dropped = language.filter_english(items)
+
+    common.CLAUDE["key_set"] = bool(os.environ.get("ANTHROPIC_API_KEY", "").strip())
+    if not common.CLAUDE["key_set"] and not args.offline:
+        log.info("No ANTHROPIC_API_KEY: formats tagged by keyword rules; the dashboard uses the rules-based shortlist")
+
     items = score.score(items, history)
     tag_cache = tag.tag_all(items, tag_cache, cfg["claude"]["tagging_model"])
     sounds = score.aggregate_sounds(items, cc_sounds)
     items.sort(key=lambda i: -(i.get("heat") or 0))
+    short = shortlist.build(items, sounds)
 
     # weekly digest: Mondays, on request, or the first time there's a key
     existing = load(DATA / "digest.json", None)
@@ -84,7 +93,7 @@ def main():
     dg = existing
     if args.offline:
         dg = digest.attach_examples(load(FIX / "digest_sample.json", {}), items)
-    elif want_digest and os.environ.get("ANTHROPIC_API_KEY"):
+    elif want_digest and common.CLAUDE["key_set"]:
         log.info("Writing weekly digest")
         new = digest.build(items, sounds, cfg["claude"]["digest_model"])
         if new:
@@ -102,9 +111,17 @@ def main():
         "sounds": sounds,
         "hashtags": cc_tags,
         "digest": dg,
+        "shortlist": short,
+        "digest_page_url": cfg.get("digest_page_url") or None,
+        "language_filter": {"enabled": cfg.get("english_only", True), "removed": len(dropped),
+                            "examples": dropped[:40]},
+        "claude": {**common.CLAUDE, "offline": args.offline,
+                   "tagged_by_claude": sum(1 for i in items if i.get("tagged_by") == "claude")},
     }
     save(DATA / "radar.json", out)
     if not args.offline:
+        from radar.apify import SAMPLES
+        save(DATA / "debug_samples.json", SAMPLES)
         save(DATA / "history.json", score.update_history(items, history))
         save(DATA / "tags.json", tag_cache)
         if dg:

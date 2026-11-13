@@ -103,6 +103,12 @@ td.num { font-variant-numeric: tabular-nums; }
 .pick .ex { display: block; font-size: 13px; margin-top: 4px; color: var(--ink-2); }
 .num-badge { font: 400 15px "Instrument Serif"; color: var(--accent); }
 .note { width: 100%; font: 13px "Instrument Sans"; border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; background: var(--bg); color: var(--ink); resize: vertical; min-height: 36px; }
+.writeup { display: block; text-decoration: none; background: var(--ink); color: var(--bg); border-radius: 14px; padding: 16px 18px; margin: 4px 0 20px; }
+.writeup .by { color: inherit; opacity: .7; display: block; margin-bottom: 4px; }
+.writeup b { font: 400 22px/1.25 "Instrument Serif", serif; }
+.pick p { margin: 0 0 6px; }
+footer details summary { cursor: pointer; }
+footer details div { margin: 4px 0 0 12px; }
 footer { color: var(--ink-3); font-size: 13px; border-top: 1px solid var(--line); padding: 18px 0 40px; display: grid; gap: 6px; }
 @media (max-width: 760px) { h1 { font-size: 36px; } .two { grid-template-columns: 1fr; } .meta { text-align: left; } .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; } .stats { grid-template-columns: 1fr 1fr; } .stat:nth-child(3) { display: none; } }
 </style>
@@ -258,9 +264,14 @@ function viewSounds() {
 }
 
 function viewDigest() {
-  const d = S.data.digest;
-  if (!d) return `<p class="empty">The first digest arrives on Monday, or run the workflow with "Write a fresh weekly digest now" ticked.</p>`;
-  return `<p class="section-sub">Week of ${esc(d.week_of)}${S.data.sample ? " · sample digest" : ""}</p>
+  const d = S.data.digest, sl = S.data.shortlist, url = S.data.digest_page_url;
+  let html = "";
+  if (url) html += `<a class="writeup" href="${esc(url)}" target="_blank" rel="noopener">
+      <span class="by">Written by Claude every Monday morning</span>
+      <b>Read this week's full write-up: five formats worth borrowing and how a client could use each one ↗</b></a>`;
+  const note = claudeNote();
+  if (note) html += `<div class="list-card">${note}</div>`;
+  if (d) html += `<p class="section-sub">Week of ${esc(d.week_of)}${S.data.sample ? " · sample digest" : ""}</p>
   <div class="digest-head">${esc(d.headline)}</div>
   <div class="picks">${(d.picks || []).map((p, k) => `<section class="pick">
     <span class="num-badge">${String(k + 1).padStart(2, "0")}</span> <span class="tag ${p.shelf === "fast meme" ? "meme" : "durable"}">${p.shelf === "fast meme" ? "Fast meme" : "Durable format"}</span>
@@ -270,8 +281,37 @@ function viewDigest() {
     <dt>How a client could use it</dt><dd>${esc(p.client_angle)}</dd>
     <dt>Watch out</dt><dd>${esc(p.watch_out)}</dd>
     ${(p.examples || []).length ? `<dt>Examples</dt><dd>${p.examples.map(e => `<a class="ex" href="${esc(e.url)}" target="_blank" rel="noopener">${PLAT[e.platform]} · ${esc(e.author)}: ${esc(e.hook).slice(0, 70)} ↗</a>`).join("")}</dd>` : ""}</dl>
-  </section>`).join("")}</div>
-  ${(d.sounds_to_watch || []).length ? `<h3>Sounds to watch</h3>${d.sounds_to_watch.map(s => `<div class="list-card"><h4>♪ ${esc(s.name)}</h4><p>${esc(s.note)}</p></div>`).join("")}` : ""}`;
+  </section>`).join("")}</div>`;
+  if (sl) html += viewShortlist(sl);
+  return html || `<p class="empty">Nothing here yet. The shortlist appears after the next run.</p>`;
+}
+
+function viewShortlist(sl) {
+  const x = v => v != null ? v.toFixed(1) + "×" : "";
+  return `<h2 class="section-title">Formats landing this week, by the numbers</h2>
+  <p class="section-sub">Rebuilt every day from the radar data, no AI involved. Ranked by how many accounts are using each format, how hot their videos are and how many are still rising.</p>
+  ${sl.formats.length ? `<div class="picks">${sl.formats.map((f, k) => `<section class="pick">
+    <span class="num-badge">${String(k + 1).padStart(2, "0")}</span> <span class="tag ${f.shelf === "fast meme" ? "meme" : "durable"}">${f.shelf === "fast meme" ? "Fast meme" : "Durable format"}</span>
+    <h3>${esc(f.format)}</h3>
+    <p>${esc(f.summary)}</p>
+    <p class="by">On ${f.platforms.map(p => PLAT[p]).join(", ")} · median heat ${f.median_heat}</p>
+    <dl><dt>Best examples</dt><dd>${f.examples.map(e => `<a class="ex" href="${esc(e.url)}" target="_blank" rel="noopener">${PLAT[e.platform]} · ${esc(e.author)}: ${esc(e.hook).slice(0, 70)}${e.vs_usual ? ` (${x(e.vs_usual)} usual)` : ""} ↗</a>`).join("")}</dd></dl>
+  </section>`).join("")}</div>` : `<p class="empty">Not enough tagged videos yet to rank formats.</p>`}
+  <div class="two"><div>
+    <h3>Sounds on the way up</h3>
+    ${sl.sounds.length ? sl.sounds.map(s => `<div class="list-card"><h4>♪ ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}</h4><p>${esc(s.artist || "")}${s.artist ? " · " : ""}${esc(s.note)}</p></div>`).join("") : `<p class="empty">No rising sounds this run.</p>`}
+  </div><div>
+    <h3>Brand posts that beat their usual</h3>
+    ${sl.brand_standouts.length ? sl.brand_standouts.map(b => `<div class="list-card"><h4><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.author)} ↗</a> · ${x(b.vs_usual)} usual views</h4><p>${PLAT[b.platform]} · ${esc(b.format || "")}: ${esc(b.hook).slice(0, 90)}</p></div>`).join("") : `<p class="empty">No brand post beat its usual by 1.5× this run.</p>`}
+  </div></div>`;
+}
+
+function claudeNote() {
+  const c = S.data.claude;
+  if (!c || c.offline) return "";
+  if (!c.key_set) return "";
+  if (c.errors?.length) return `<b>The Claude API returned an error this run.</b><br><code style="white-space:pre-wrap">${esc(c.errors.join("\n"))}</code>`;
+  return "";
 }
 
 function viewSwipe() {
@@ -333,6 +373,8 @@ fetch("data/radar.json?" + Date.now()).then(r => r.json()).then(d => {
   document.getElementById("foot").innerHTML = `
     <div><b>How heat works:</b> views per hour since posting, ranked within each platform (55%), how far the video beat the account's usual views (35%), and whether it sped up since yesterday (10%). TikTok trending-list videos without a post time are scored on their chart position.</div>
     <div>Videos this run: ${d.counts.youtube} YouTube · ${d.counts.tiktok} TikTok · ${d.counts.instagram} Reels. Region: ${esc(d.region)}.</div>
+    ${d.claude && !d.claude.offline ? `<div>Format tagging: ${d.claude.tagged_by_claude ? `Claude (${d.claude.tagged_by_claude} videos)` : "keyword rules only"}${d.claude.errors?.length ? ", Claude errors this run (see the formats tab)" : ""}.</div>` : ""}
+    ${d.language_filter?.enabled ? `<details><summary>Non-English videos removed this run: ${d.language_filter.removed}</summary>${(d.language_filter.examples || []).map(x => `<div><a href="${esc(x.url)}" target="_blank" rel="noopener">${PLAT[x.platform]} · ${esc(x.author)}</a>: ${esc(x.text).slice(0, 80)} <i>(${esc(x.reason)})</i></div>`).join("")}</details>` : ""}
     ${d.missing_handles?.length ? `<div>Handles that returned nothing (check spelling in watchlist.yaml): ${d.missing_handles.map(esc).join(", ")}</div>` : ""}`;
   render();
 }).catch(() => { document.getElementById("main").innerHTML = `<p class="empty">Couldn't load data/radar.json. Has the workflow run yet?</p>`; document.getElementById("updated").textContent = ""; });

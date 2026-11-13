@@ -62,6 +62,8 @@ def normalise(v: dict, source: str, list_name: str, followers: int | None = None
         likes=to_int(st.get("likeCount")),
         comments=to_int(st.get("commentCount")),
         hashtags=[t.lower() for t in sn.get("tags", [])[:8]],
+        lang_hint=sn.get("defaultAudioLanguage") or sn.get("defaultLanguage"),
+        category=sn.get("categoryId"),
     )
 
 

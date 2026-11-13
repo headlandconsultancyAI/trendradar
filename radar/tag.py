@@ -10,6 +10,7 @@ import json
 import os
 import re
 
+from . import common
 from .common import log
 
 FORMATS = {
@@ -30,12 +31,20 @@ FORMATS = {
     "Long form show clip":    ("durable format", r"\b(episode|ep\.?\s?\d+|full video|podcast|clip)\b"),
     "Music video":            ("durable format", r"\b(official (music )?video|official audio|lyric video|ft\.|feat\.)\b"),
     "Trailer":                ("durable format", r"\b(trailer|teaser)\b"),
+    "Gaming clip":            ("durable format", r"$^"),
     "Other":                  ("durable format", r"$^"),
 }
 FORMAT_NAMES = list(FORMATS)
 
 
+YT_CATEGORY = {"10": "Music video", "1": "Trailer", "30": "Trailer", "44": "Trailer", "20": "Gaming clip"}
+CHART = {"Music": "Music video", "Film trailers": "Trailer", "Gaming": "Gaming clip"}
+
+
 def keyword_tag(item: dict) -> dict:
+    fixed = CHART.get(item.get("chart")) or YT_CATEGORY.get(str(item.get("category") or ""))
+    if item.get("platform") == "youtube" and fixed:
+        return {"format": fixed, "shelf": FORMATS[fixed][0], "why": "", "tagged_by": "keywords"}
     text = f"{item.get('title', '')} {' '.join(item.get('hashtags') or [])}".lower()
     for name, (shelf, pattern) in FORMATS.items():
         if re.search(pattern, text):
@@ -96,8 +105,11 @@ def claude_tag(items: list[dict], model: str, batch: int = 30) -> dict[str, dict
                     row["shelf"] = FORMATS[row["format"]][0]
                 out[row["id"]] = {"format": row["format"], "shelf": row["shelf"],
                                   "why": row.get("why", ""), "tagged_by": "claude"}
+                common.CLAUDE["tagged"] += 1
         except Exception as e:  # keep going; untagged items fall back to keywords
-            log.error("Claude tagging batch failed: %s", e)
+            common.claude_error("Format tagging", e)
+            if i == 0 and not out:  # first batch failed outright: same error will repeat, stop here
+                break
     return out
 
 

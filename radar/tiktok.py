@@ -32,6 +32,7 @@ def normalise_cc_video(r: dict) -> dict:
         hashtags=[h.lstrip("#").lower() for h in (r.get("hashtags") or [])] or hashtags_from(desc),
         sound={"id": None, "name": r.get("soundName"), "artist": None, "original": None,
                "trending": None} if r.get("soundName") else None,
+        lang_hint=first(r, "textLanguage", "language"),
     ) | {"cc_trend": r.get("trend")}
 
 
@@ -113,6 +114,7 @@ def normalise_profile_video(r: dict, list_name: str) -> dict:
             "original": first(music, "musicOriginal", "original"),
             "trending": None,
         } if music else None,
+        lang_hint=first(r, "textLanguage", "language"),
     )
 
 
