@@ -15,6 +15,7 @@ english_only: true    # drop videos whose caption or audio isn't in English
 digest_page_url: https://claude.ai/artifact/9XaBMcKPxBzNTyyPr9u34Z
 
 youtube:
+  exclude_shorts: true  # leave YouTube Shorts out; TikTok and Reels are unaffected
   chart_categories:   # YouTube "mostPopular" now only covers music, film and gaming
     "0": All
     "10": Music

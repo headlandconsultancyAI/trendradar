@@ -113,6 +113,7 @@ def main():
         "digest": dg,
         "shortlist": short,
         "digest_page_url": cfg.get("digest_page_url") or None,
+        "shorts_filter": youtube.SHORTS,
         "language_filter": {"enabled": cfg.get("english_only", True), "removed": len(dropped),
                             "examples": dropped[:40]},
         "claude": {**common.CLAUDE, "offline": args.offline,
